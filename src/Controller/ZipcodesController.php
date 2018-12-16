@@ -32,10 +32,21 @@ class ZipcodesController extends AppController
 
             $data = $this->CsvImport->convertCSV($filepath);
 
-            $this->set([
-                'data' => $data[0],
-                'value' => 'abc'
-            ]);
+            $conn = $this->Zipcodes->getConnection();
+            $conn->begin();
+            try {
+                $this->insertZipcodesByChunk($data);
+
+                $conn->commit();
+                $this->Flash->success('The zipcode has been saved.');
+                return $this->redirect(['action' => 'index']);
+            } catch (Exception $ex) {
+                $conn->rollback();
+                $this->log($ex->getMessage());
+                $this->Flash->error('The zipcode could not be saved. Please, try again.');
+            }
+
+            $this->set([]);
         }
 
     }
@@ -59,6 +70,51 @@ class ZipcodesController extends AppController
             'update_reason' => $row[13],    //更新の表示（「0」は変更なし、「1」は変更あり、「2」廃止（廃止データのみ使用））
             'change_reason' => $row[14],    //変更理由　（「0」は変更なし、「1」市政・区政・町政・分区・政令指定都市施行、「2」住居表示の実施、「3」区画整理、「4」郵便区調整等、「5」訂正、「6」廃止（廃止データのみ使用））
         ];
+
+    }
+
+    private function insertZipcodesByChunk ($data) {
+
+        $data_chunked = array_chunk($data, 300);
+
+        $result = [];
+        foreach ($data_chunked as $data) {
+            $result = $this->insertZipcodes($data);
+        }
+
+        return $result;
+    }
+
+    private function insertZipcodes ($data = []) {
+
+        $zipcodes = $this->Zipcodes;
+
+        $columns = [
+            '`jis_code`',
+            '`zipcode_old`',
+            '`zipcode`',
+            '`prefecture_mb`',
+            '`city_mb`',
+            '`town_mb`',
+            '`prefecture`',
+            '`city`',
+            '`town`',
+            '`has_multi_zipcode`',
+            '`is_each_AZA`',
+            '`has_CHOU`',
+            '`is_multi_zipcode`',
+            '`update_reason`',
+            '`change_reason`',
+        ];
+
+        $zipcodes_query = $zipcodes->query();
+        $zipcodes_query->insert($columns);
+
+        foreach ($data as $row) {
+            $zipcodes_query->values($row);
+        }
+
+        return $zipcodes_query->execute();
 
     }
 
