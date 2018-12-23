@@ -37,10 +37,10 @@
         <tbody>
             <?php foreach ($zipcodes as $zipcode): ?>
             <tr>
-                <td><?= $this->Number->format($zipcode->id) ?></td>
-                <td><?= $this->Number->format($zipcode->jis_code) ?></td>
-                <td><?= $this->Number->format($zipcode->zipcode_old) ?></td>
-                <td><?= $this->Number->format($zipcode->zipcode) ?></td>
+                <td><?= $zipcode->id ?></td>
+                <td><?= $zipcode->jis_code ?></td>
+                <td><?= $zipcode->zipcode_old ?></td>
+                <td><?= $zipcode->zipcode ?></td>
                 <td><?= h($zipcode->prefecture_mb) ?></td>
                 <td><?= h($zipcode->city_mb) ?></td>
                 <td><?= h($zipcode->town_mb) ?></td>
@@ -51,8 +51,8 @@
                 <td><?= h($zipcode->is_each_AZA) ?></td>
                 <td><?= h($zipcode->has_CHOU) ?></td>
                 <td><?= h($zipcode->is_multi_zipcode) ?></td>
-                <td><?= $this->Number->format($zipcode->update_reason) ?></td>
-                <td><?= $this->Number->format($zipcode->change_reason) ?></td>
+                <td><?= $zipcode->update_reason ?></td>
+                <td><?= $zipcode->change_reason ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $zipcode->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $zipcode->id]) ?>
