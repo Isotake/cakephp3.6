@@ -47,10 +47,10 @@
                 <td><?= h($zipcode->prefecture) ?></td>
                 <td><?= h($zipcode->city) ?></td>
                 <td><?= h($zipcode->town) ?></td>
-                <td><?= h($zipcode->has_multi_zipcode) ?></td>
-                <td><?= h($zipcode->is_each_AZA) ?></td>
-                <td><?= h($zipcode->has_CHOU) ?></td>
-                <td><?= h($zipcode->is_multi_zipcode) ?></td>
+                <td><?= $this->Zipcode->convert_hasMultiZipcode($zipcode->has_multi_zipcode) ?></td>
+                <td><?= $this->Zipcode->convert_isEachAza($zipcode->is_each_AZA) ?></td>
+                <td><?= $this->Zipcode->convert_hasChou($zipcode->has_CHOU) ?></td>
+                <td><?= $this->Zipcode->convert_isMultiZipcode($zipcode->is_multi_zipcode) ?></td>
                 <td><?= $zipcode->update_reason ?></td>
                 <td><?= $zipcode->change_reason ?></td>
                 <td class="actions">
