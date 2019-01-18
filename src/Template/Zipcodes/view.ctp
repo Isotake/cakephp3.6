@@ -11,6 +11,8 @@
         <li><?= $this->Form->postLink(__('Delete Zipcode'), ['action' => 'delete', $zipcode->id], ['confirm' => __('Are you sure you want to delete # {0}?', $zipcode->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Zipcodes'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Zipcode'), ['action' => 'add']) ?> </li>
+        <li>&nbsp;</li>
+        <li><?= $this->Html->link(__('CSV Import'), ['action' => 'import']) ?></li>
     </ul>
 </nav>
 <div class="zipcodes view large-9 medium-8 columns content">

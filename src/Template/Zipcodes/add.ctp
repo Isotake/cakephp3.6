@@ -8,6 +8,8 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('List Zipcodes'), ['action' => 'index']) ?></li>
+        <li>&nbsp;</li>
+        <li><?= $this->Html->link(__('CSV Import'), ['action' => 'import']) ?></li>
     </ul>
 </nav>
 <div class="zipcodes form large-9 medium-8 columns content">
