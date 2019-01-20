@@ -14,6 +14,33 @@
 </nav>
 <div class="zipcodes index large-9 medium-8 columns content">
     <h3><?= __('Zipcodes') ?></h3>
+    <?= $this->Form->create(null, [
+            'url' => [
+                'controller' => 'Zipcodes',
+                'action' => 'index'
+            ]
+    ]) ?>
+<!--    --><?php //echo $this->Form->control('Search.zipcode', [
+//        'label' => 'Zipcode',
+//        'value' => $search_params['zipcode']
+//    ]) ?>
+    <?= $this->Form->control('Search.name', [
+            'label' => '住所（漢字）',
+            'value' => $search_params['name']
+    ]) ?>
+    <?= $this->Form->control('Search.kana', [
+        'label' => '住所（ｶﾀｶﾅ）',
+        'value' => $search_params['kana']
+    ]) ?>
+    <?= $this->Form->button('Search', [
+        'type' => 'submit'
+    ]) ?>
+    <?= $this->Form->button('Clear', [
+            'type' => 'button',
+            'id' => 'reset',
+            'style' => 'margin-left: 1.0rem;'
+    ]) ?>
+    <?= $this->Form->end() ?>
     <table cellpadding="0" cellspacing="0">
         <thead>
             <tr>

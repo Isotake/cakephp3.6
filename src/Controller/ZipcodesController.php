@@ -125,9 +125,37 @@ class ZipcodesController extends AppController
      */
     public function index()
     {
-        $zipcodes = $this->paginate($this->Zipcodes);
+        $session = $this->getRequest()->getSession();
 
-        $this->set(compact('zipcodes'));
+        if ($this->request->is('post')) {
+            $search_params = $this->request->getData('Search');
+            $session->write('Search.name', $search_params['name']);
+            $session->write('Search.kana', $search_params['kana']);
+            $where = $this->zipcodesWhereClause($search_params);
+            $entities = $this->Zipcodes->find()->where($where);
+        } else {
+            $search_params = [
+                'name' => $session->read('Search.name'),
+                'kana' => $session->read('Search.kana')
+            ];
+            $entities = $this->Zipcodes;
+        }
+
+        $zipcodes = $this->paginate($entities);
+
+        $this->set(compact('zipcodes', 'search_params'));
+    }
+
+    private function zipcodesWhereClause($params)
+    {
+        if (isset($params['name']) && strlen(trim($params['name'])) > 0){
+            $where['OR'] = [
+                ['prefecture LIKE' => '%' . trim($params['name']) . '%'],
+                ['city LIKE' => '%' . trim($params['name']) . '%'],
+                ['town LIKE' => '%' . trim($params['name']) . '%']
+            ];
+        }
+        return $where;
     }
 
     /**
