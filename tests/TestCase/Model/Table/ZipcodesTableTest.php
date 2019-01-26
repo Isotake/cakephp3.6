@@ -68,6 +68,14 @@ class ZipcodesTableTest extends TestCase
      */
     public function testValidationDefault()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+//        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    public function testZipcodesTableFind() {
+        $result = $this->ZipcodesTable->find('all')->first();
+        $this->assertFalse(empty($result));
+        $this->assertTrue(is_a($result, 'App\Model\Entity\Zipcode'));
+        $this->assertEquals($result->id, 1);
+//        $this->assertStringStartsWith('6', $result->zipcode);
     }
 }

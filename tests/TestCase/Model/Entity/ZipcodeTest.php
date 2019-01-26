@@ -47,6 +47,10 @@ class ZipcodeTest extends TestCase
      */
     public function testInitialization()
     {
-        $this->markTestIncomplete('Not implemented yet.');
+//        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    public function testBoardInstance() {
+        $this->assertTrue(is_a($this->Zipcode, 'App\Model\Entity\Zipcode'));
     }
 }

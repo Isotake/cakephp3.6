@@ -51,24 +51,9 @@ class ZipcodesFixture extends TestFixture
     public function init()
     {
         $this->records = [
-            [
-                'id' => 1,
-                'jis_code' => 1,
-                'zipcode_old' => 1,
-                'zipcode' => 1,
-                'prefecture_mb' => 'Lorem ipsum dolor sit amet',
-                'city_mb' => 'Lorem ipsum dolor sit amet',
-                'town_mb' => 'Lorem ipsum dolor sit amet',
-                'prefecture' => 'Lorem ipsum dolor sit amet',
-                'city' => 'Lorem ipsum dolor sit amet',
-                'town' => 'Lorem ipsum dolor sit amet',
-                'has_multi_zipcode' => 1,
-                'is_each_AZA' => 1,
-                'has_CHOU' => 1,
-                'is_multi_zipcode' => 1,
-                'update_reason' => 1,
-                'change_reason' => 1
-            ],
+            array('id' => '1', 'jis_code' => '1101', 'zipcode_old' => '64', 'zipcode' => '640941', 'prefecture_mb' => 'ﾎｯｶｲﾄﾞｳ', 'city_mb' => 'ｻｯﾎﾟﾛｼﾁｭｳｵｳｸ', 'town_mb' => 'ｱｻﾋｶﾞｵｶ', 'prefecture' => '北海道', 'city' => '札幌市中央区', 'town' => '旭ケ丘', 'has_multi_zipcode' => '0', 'is_each_AZA' => '0', 'has_CHOU' => '1', 'is_multi_zipcode' => '0', 'update_reason' => '0', 'change_reason' => '0'),
+            array('id' => '2', 'jis_code' => '1101', 'zipcode_old' => '60', 'zipcode' => '600041', 'prefecture_mb' => 'ﾎｯｶｲﾄﾞｳ', 'city_mb' => 'ｻｯﾎﾟﾛｼﾁｭｳｵｳｸ', 'town_mb' => 'ｵｵﾄﾞｵﾘﾋｶﾞｼ', 'prefecture' => '北海道', 'city' => '札幌市中央区', 'town' => '大通東', 'has_multi_zipcode' => '0', 'is_each_AZA' => '0', 'has_CHOU' => '1', 'is_multi_zipcode' => '0', 'update_reason' => '0', 'change_reason' => '0'),
+            array('id' => '3', 'jis_code' => '1101', 'zipcode_old' => '60', 'zipcode' => '600042', 'prefecture_mb' => 'ﾎｯｶｲﾄﾞｳ', 'city_mb' => 'ｻｯﾎﾟﾛｼﾁｭｳｵｳｸ', 'town_mb' => 'ｵｵﾄﾞｵﾘﾆｼ(1-19ﾁｮｳﾒ)', 'prefecture' => '北海道', 'city' => '札幌市中央区', 'town' => '大通西（１〜１９丁目）', 'has_multi_zipcode' => '1', 'is_each_AZA' => '0', 'has_CHOU' => '1', 'is_multi_zipcode' => '0', 'update_reason' => '0', 'change_reason' => '0')
         ];
         parent::init();
     }
