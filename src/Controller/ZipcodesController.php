@@ -5,6 +5,7 @@ use App\Controller\AppController;
 use Cake\I18n\Time;
 use Cake\Filesystem\Folder;
 use RuntimeException;
+use Cake\Mailer\Email;
 
 /**
  * Zipcodes Controller
@@ -22,6 +23,14 @@ class ZipcodesController extends AppController
             'dirname_uploaded' => 'zipcodes',
             'convert_function' => 'zipcodesFunc',
         ]);
+    }
+
+    public function mailTransfer() {
+        $email = new Email('mail');
+        $email->setFrom(['info@takehaya.jp' => 'My Site'])
+            ->setTo('k.otsuka@daishokagaku.com')
+            ->setSubject('About')
+            ->Send('My message');
     }
 
     public function import() {
