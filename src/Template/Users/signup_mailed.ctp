@@ -7,4 +7,5 @@
 <?= $this->element('Users/sidemenu', [null]) ?>
 <div class="users index large-9 medium-8 columns content">
     <h3><?= __('Signup - Mailed') ?></h3>
+    <p>We have mailed to you.</p>
 </div>

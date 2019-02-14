@@ -7,4 +7,14 @@
 <?= $this->element('Users/sidemenu', [null]) ?>
 <div class="users index large-9 medium-8 columns content">
     <h3><?= __('Login') ?></h3>
+    <?= $this->Form->create($user) ?>
+    <fieldset>
+        <legend><?= __('Login') ?></legend>
+        <?php
+        echo $this->Form->control('email', ['value' => 'k.otsuka@daishokagaku.com']);
+        echo $this->Form->control('password', ['value' => '1234']);
+        ?>
+    </fieldset>
+    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->end() ?>
 </div>
