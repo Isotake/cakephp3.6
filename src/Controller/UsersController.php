@@ -13,6 +13,56 @@ use App\Controller\AppController;
 class UsersController extends AppController
 {
 
+    public function signupRegister()
+    {
+
+    }
+
+    public function signupConfirm()
+    {
+
+    }
+
+    public function signupMailed()
+    {
+
+    }
+
+    public function signupComplete()
+    {
+
+    }
+
+    public function login()
+    {
+
+    }
+
+    public function mypage()
+    {
+
+    }
+
+    public function logout()
+    {
+
+    }
+
+    public function reminder()
+    {
+
+    }
+
+    public function reminderMailed()
+    {
+
+    }
+
+    public function reminderComplete()
+    {
+
+    }
+
     /**
      * Index method
      *
