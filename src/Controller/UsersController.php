@@ -147,7 +147,7 @@ class UsersController extends AppController
 
     public function login()
     {
-        $user = $this->Users->newEntity();
+        //$user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $request_data = $this->request->getData();
             $credential = [
@@ -155,23 +155,32 @@ class UsersController extends AppController
                 'password' => $request_data['password'],
             ];
 
-            try {
+            try
+            {
                 $user = $this->sentinel->authenticate($credential);
-            } catch (NotActivatedException $notActivated) {
-
-            } catch (ThrottlingException $throttling) {
-
+            }
+            catch (NotActivatedException $notActivated)
+            {
+                $this->Flash->error('Account is not activated.');
+                return $this->redirect(['action' => 'login']);
+            }
+            catch (ThrottlingException $throttling)
+            {
+                $delay = $throttling->getDelay();
+                $this->Flash->error('Your account is blocked for ' . $delay . 'second(s).');
+                return $this->redirect(['action' => 'login']);
             }
 
             if (!$user) {
-
+                $this->Flash->error('Invalid email or password.');
+                return $this->redirect(['action' => 'login']);
             }
 
             $this->Flash->success('you are logged in.');
             return $this->redirect(['action' => 'mypage']);
 
         }
-        $this->set(compact('user'));
+        //$this->set(compact('user'));
     }
 
     public function mypage()

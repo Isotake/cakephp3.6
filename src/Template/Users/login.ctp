@@ -7,7 +7,7 @@
 <?= $this->element('Users/sidemenu', [null]) ?>
 <div class="users index large-9 medium-8 columns content">
     <h3><?= __('Login') ?></h3>
-    <?= $this->Form->create($user) ?>
+    <?= $this->Form->create(null, ['type' => 'post']) ?>
     <fieldset>
         <legend><?= __('Login') ?></legend>
         <?php
