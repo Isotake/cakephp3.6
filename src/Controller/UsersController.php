@@ -244,7 +244,8 @@ class UsersController extends AppController
         $user = $this->sentinel->findByCredentials(['email' => $request_email]);
 
         if (!$user) {
-
+            $this->Flash->error('We can\'t find a user with that e-mail address.');
+            return $this->redirect(['action' => 'reminder']);
         }
 
         $reminder_repository = $this->sentinel->getReminderRepository();
