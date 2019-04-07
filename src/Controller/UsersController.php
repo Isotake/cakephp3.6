@@ -224,7 +224,9 @@ class UsersController extends AppController
     }
 
     public function sendReminderCode($user_email, $code) {
-        $content = 'http://192.168.1.133/caketest/users/reminder-complete?email=' . base64_encode($user_email) . '&code=' . $code;
+        $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https://' : 'http://' ;
+        $server_name = $_SERVER['SERVER_NAME'];
+        $content = $protocol . $server_name . '/caketest/users/reminder-complete?email=' . base64_encode($user_email) . '&code=' . $code;
 
         $email = new Email('mail');
         $email->setFrom(['info@takehaya.jp' => 'My Site']);
