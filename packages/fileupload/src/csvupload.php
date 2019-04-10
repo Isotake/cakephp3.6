@@ -11,23 +11,16 @@ error_reporting(E_ALL);
 if (isset($_FILES['fileupload'])) {
 
 	$config = [
-		'upload_dir' => 'uploads',
+		'upload_dir' => 'caketest/uploads_csv/zipcodes',
 	];
 	$fileupload = new FileUpload($config);
-	var_dump($fileupload);
-
 	$csvupload = new CsvUpload($fileupload);
-	var_dump($csvupload);
 
-//	$result = $fileupload->upload($_FILES['fileupload']);
-//	var_dump($fileupload);
-//	var_dump($result);
-//
-//	if ($result) {
-//		$csvupload = new CsvUpload($fileupload);
-//		$csv_data = $csvupload->convertCSV($fileupload->uploaded_filepath);
-//		var_dump($csv_data);
-//	}
+	$result = $csvupload->fileupload->upload($_FILES['fileupload']);
+	if ($result) {
+		$csv_data = $csvupload->convertCSV($csvupload->fileupload->uploaded_filepath);
+		var_dump($csv_data);
+	}
 }
 
 ?>

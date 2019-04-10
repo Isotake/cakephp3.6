@@ -4,7 +4,7 @@ namespace Packages\FileUpload\App;
 
 class CsvUpload {
 
-	protected $fileupload = null;
+	public $fileupload = null;
 
 	public function __construct(FileUpload $fileupload)
 	{

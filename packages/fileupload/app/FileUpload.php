@@ -56,7 +56,7 @@ class FileUpload {
 			return false;
 		}
 
-		if (copy($tmpfile['tmp_name'], $this->upload_dir . $this->ds . $tmpfile['name'] . '.3')) {
+		if (copy($tmpfile['tmp_name'], $this->upload_dir . $this->ds . $tmpfile['name'])) {
 			$this->uploaded_filepath = $this->upload_dir . $this->ds . $tmpfile['name'];
 			return true;
 		} else {
