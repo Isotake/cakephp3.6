@@ -25,23 +25,17 @@ class FileUpload {
 	 */
 	private function checkUploaddir ($upload_dir)
 	{
-		$upload_dirs = explode($this->ds, $upload_dir);
-		$check_dir = '';
-		foreach ($upload_dirs as $dirname) {
-			$check_dir.=  $dirname;
-			$check_path = $this->getUploadPath($check_dir);
-			$check_dir.=  $this->ds;
-			try {
-				if (!is_dir($check_path)) {
-					throw new \RuntimeException($check_path . ' is not found.');
-				} else if (!is_writable($check_path)) {
-					throw new \RuntimeException($check_path . ' is not writable.');
-				}
-			} catch (RuntimeException $ex) {
-				return false;
-			}
-		}
-		return true;
+	    $check_dir = $this->getUploadPath($upload_dir);
+        try {
+            if (!is_dir($check_dir)) {
+                throw new \RuntimeException($check_dir . ' is not found.');
+            } else if (!is_writable($check_dir)) {
+                throw new \RuntimeException($check_dir . ' is not writable.');
+            }
+        } catch (RuntimeException $ex) {
+            return false;
+        }
+        return true;
 	}
 
 	private function getUploadPath ($dirname)
