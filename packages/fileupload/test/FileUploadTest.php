@@ -49,7 +49,7 @@ class FileUploadTest extends TestCase {
 
 		$this->expectException(\RuntimeException::class);
 		$this->test = new FileUpload($config);
-		$this->assertTrue($this->test->upload($_FILES['test']));
+//		$this->assertTrue($this->test->upload($_FILES['test']));
 	}
 
 	/**
@@ -94,24 +94,24 @@ class FileUploadTest extends TestCase {
 		return [
 			'2 : dir_not_found' => [
 				[
-					'config' => 'packages/fileupload/app/dir_not_found',
+					'config' => 'caketest/packages/fileupload/test/dir_not_found',
 					'file' => [
 						'name' => 'data.csv',
 						'type' => 'text/csv',
 						'size' => 25,
-						'tmp_name' => __DIR__ . '/_files/data.csv',
+						'tmp_name' => __DIR__ . '/dir_before/data.csv',
 						'error' => 0,
 					],
 				],
 			],
 			'3 : dir_not_writable' => [
 				[
-					'config' => 'packages/fileupload/app/dir_not_writable',
+					'config' => 'caketest/packages/fileupload/test/dir_not_writable',
 					'file' => [
 						'name' => 'data.csv',
 						'type' => 'text/csv',
 						'size' => 25,
-						'tmp_name' => __DIR__ . '/_files/data.csv',
+						'tmp_name' => __DIR__ . '/dir_before/data.csv',
 						'error' => 0,
 					],
 				],
@@ -122,14 +122,14 @@ class FileUploadTest extends TestCase {
 	public function fileUploadProvider ()
 	{
 		return [
-			'1 : _files' => [
+			'1 : dir_before' => [
 				[
-					'config' => 'packages/fileupload/app/_files',
+					'config' => 'caketest/packages/fileupload/test/dir_after',
 					'file' => [
 						'name' => 'data.csv',
 						'type' => 'text/csv',
 						'size' => 25,
-						'tmp_name' => __DIR__ . '/_files/data.csv',
+						'tmp_name' => __DIR__ . '/dir_before/data.csv',
 						'error' => 0,
 					],
 				],
@@ -142,13 +142,13 @@ class FileUploadTest extends TestCase {
 		return [
 			'2 : empty' => [
 				[
-					'config' => 'packages/fileupload/app/_files',
+					'config' => 'caketest/packages/fileupload/test/dir_after',
 					'file' => [],
 				],
 			],
 			'3 : tmpfile does not exist' => [
 				[
-					'config' => 'packages/fileupload/app/_files',
+					'config' => 'caketest/packages/fileupload/test/dir_after',
 					'file' => [
 						'name' => 'data.csv',
 						'type' => 'text/csv',
@@ -160,108 +160,108 @@ class FileUploadTest extends TestCase {
 			],
 			'4 : 0 byte' => [
 				[
-					'config' => 'packages/fileupload/app/_files',
+					'config' => 'caketest/packages/fileupload/test/dir_after',
 					'file' => [
 						'name' => 'data.csv',
 						'type' => 'text/csv',
 						'size' => 0,
-						'tmp_name' => __DIR__ . '/_files/data.csv',
+						'tmp_name' => __DIR__ . '/dir_before/data.csv',
 						'error' => 0,
 					],
 				]
 			],
 			'5 : UPLOAD_ERR_INI_SIZE' => [
 				[
-					'config' => 'packages/fileupload/app/_files',
+					'config' => 'caketest/packages/fileupload/test/dir_after',
 					'file' => [
 						'name' => 'data.csv',
 						'type' => 'text/csv',
 						'size' => 25,
-						'tmp_name' => __DIR__ . '/_files/data.csv',
+						'tmp_name' => __DIR__ . '/dir_before/data.csv',
 						'error' => 1,
 					],
 				]
 			],
 			'6 : UPLOAD_ERR_FORM_SIZE' => [
 				[
-					'config' => 'packages/fileupload/app/_files',
+					'config' => 'caketest/packages/fileupload/test/dir_after',
 					'file' => [
 						'name' => 'data.csv',
 						'type' => 'text/csv',
 						'size' => 25,
-						'tmp_name' => __DIR__ . '/_files/data.csv',
+						'tmp_name' => __DIR__ . '/dir_before/data.csv',
 						'error' => 2,
 					],
 				]
 			],
 			'7 : UPLOAD_ERR_PARTIAL' => [
 				[
-					'config' => 'packages/fileupload/app/_files',
+					'config' => 'caketest/packages/fileupload/test/dir_after',
 					'file' => [
 						'name' => 'data.csv',
 						'type' => 'text/csv',
 						'size' => 25,
-						'tmp_name' => __DIR__ . '/_files/data.csv',
+						'tmp_name' => __DIR__ . '/dir_before/data.csv',
 						'error' => 3,
 					],
 				]
 			],
 			'8 : UPLOAD_ERR_NO_FILE' => [
 				[
-					'config' => 'packages/fileupload/app/_files',
+					'config' => 'caketest/packages/fileupload/test/dir_after',
 					'file' => [
 						'name' => 'data.csv',
 						'type' => 'text/csv',
 						'size' => 25,
-						'tmp_name' => __DIR__ . '/_files/data.csv',
+						'tmp_name' => __DIR__ . '/dir_before/data.csv',
 						'error' => 4,
 					],
 				]
 			],
 			'9 : UPLOAD_ERR_NO_TMP_DIR' => [
 				[
-					'config' => 'packages/fileupload/app/_files',
+					'config' => 'caketest/packages/fileupload/test/dir_after',
 					'file' => [
 						'name' => 'data.csv',
 						'type' => 'text/csv',
 						'size' => 25,
-						'tmp_name' => __DIR__ . '/_files/data.csv',
+						'tmp_name' => __DIR__ . '/dir_before/data.csv',
 						'error' => 6,
 					],
 				]
 			],
 			'10 : UPLOAD_ERR_CANT_WRITE' => [
 				[
-					'config' => 'packages/fileupload/app/_files',
+					'config' => 'caketest/packages/fileupload/test/dir_after',
 					'file' => [
 						'name' => 'data.csv',
 						'type' => 'text/csv',
 						'size' => 25,
-						'tmp_name' => __DIR__ . '/_files/data.csv',
+						'tmp_name' => __DIR__ . '/dir_before/data.csv',
 						'error' => 7,
 					],
 				]
 			],
 			'11 : UPLOAD_ERR_EXTENSION' => [
 				[
-					'config' => 'packages/fileupload/app/_files',
+					'config' => 'caketest/packages/fileupload/test/dir_after',
 					'file' => [
 						'name' => 'data.csv',
 						'type' => 'text/csv',
 						'size' => 25,
-						'tmp_name' => __DIR__ . '/_files/data.csv',
+						'tmp_name' => __DIR__ . '/dir_before/data.csv',
 						'error' => 8,
 					],
 				]
 			],
 			'12 : ' => [
 				[
-					'config' => 'packages/fileupload/app/_files',
+					'config' => 'caketest/packages/fileupload/test/dir_after',
 					'file' => [
 						'name' => 'data.csv',
 						'type' => 'text/csv',
 						'size' => 25,
-						'tmp_name' => __DIR__ . '/_files/data.csv',
+						'tmp_name' => __DIR__ . '/dir_before/data.csv',
 						'error' => 9,
 					],
 				]
