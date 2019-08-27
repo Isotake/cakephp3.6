@@ -9,6 +9,9 @@ use Cake\Validation\Validator;
 /**
  * Players Model
  *
+ * @property |\Cake\ORM\Association\HasMany $Photos
+ * @property |\Cake\ORM\Association\HasMany $Profiles
+ *
  * @method \App\Model\Entity\Player get($primaryKey, $options = [])
  * @method \App\Model\Entity\Player newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\Player[] newEntities(array $data, array $options = [])
@@ -38,6 +41,13 @@ class PlayersTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->hasMany('Photos', [
+            'foreignKey' => 'player_id'
+        ]);
+        $this->hasMany('Profiles', [
+            'foreignKey' => 'player_id'
+        ]);
     }
 
     /**

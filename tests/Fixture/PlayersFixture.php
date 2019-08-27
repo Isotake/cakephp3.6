@@ -42,8 +42,8 @@ class PlayersFixture extends TestFixture
             [
                 'id' => 1,
                 'username' => 'Lorem ipsum dolor sit amet',
-                'created' => '2019-08-25 08:13:56',
-                'modified' => '2019-08-25 08:13:56'
+                'created' => '2019-08-27 03:24:49',
+                'modified' => '2019-08-27 03:24:49'
             ],
         ];
         parent::init();

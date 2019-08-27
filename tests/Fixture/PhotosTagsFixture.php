@@ -44,8 +44,8 @@ class PhotosTagsFixture extends TestFixture
                 'id' => 1,
                 'photos_id' => 1,
                 'tags_id' => 1,
-                'created' => '2019-08-25 08:18:20',
-                'modified' => '2019-08-25 08:18:20'
+                'created' => '2019-08-27 03:31:17',
+                'modified' => '2019-08-27 03:31:17'
             ],
         ];
         parent::init();

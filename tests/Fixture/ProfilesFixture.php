@@ -46,8 +46,8 @@ class ProfilesFixture extends TestFixture
                 'player_id' => 1,
                 'last_name' => 'Lorem ipsum dolor sit amet',
                 'first_name' => 'Lorem ipsum dolor sit amet',
-                'created' => '2019-08-25 08:15:07',
-                'modified' => '2019-08-25 08:15:07'
+                'created' => '2019-08-27 03:30:27',
+                'modified' => '2019-08-27 03:30:27'
             ],
         ];
         parent::init();

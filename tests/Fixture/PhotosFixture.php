@@ -48,8 +48,8 @@ class PhotosFixture extends TestFixture
                 'filename_full' => 'Lorem ipsum dolor sit amet',
                 'filename' => 'Lorem ipsum dolor sit amet',
                 'extension' => 'Lorem ipsum do',
-                'created' => '2019-08-25 08:23:39',
-                'modified' => '2019-08-25 08:23:39'
+                'created' => '2019-08-27 03:30:51',
+                'modified' => '2019-08-27 03:30:51'
             ],
         ];
         parent::init();
