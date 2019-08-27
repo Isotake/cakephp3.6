@@ -16,7 +16,9 @@ class PlayersControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.players'
+        'app.players',
+        'app.photos',
+        'app.profiles'
     ];
 
     /**
