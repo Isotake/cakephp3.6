@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Log\Log;
 
 /**
  * WebApi Controller
@@ -18,6 +19,7 @@ class WebApiController extends AppController
         $this->viewBuilder()->setLayout(false);
 
         $this->request->accepts('application/json');
+        $request_data = $this->request->getData();
 
         $result = [1,2,3];
 
