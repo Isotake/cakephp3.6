@@ -13,6 +13,9 @@ use Cake\Log\Log;
 class WebApiController extends AppController
 {
 
+    /**
+     * CSRFが有効なresponseJsonData()
+     */
     public function responseJsonData()
     {
         $this->autoRender = false;

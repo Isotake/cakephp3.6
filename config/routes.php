@@ -19,6 +19,7 @@
  */
 
 use Cake\Core\Plugin;
+use Cake\Http\Middleware\CsrfProtectionMiddleware;
 use Cake\Routing\RouteBuilder;
 use Cake\Routing\Router;
 use Cake\Routing\Route\DashedRoute;
@@ -47,6 +48,17 @@ use Cake\Routing\Route\DashedRoute;
 Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/', function (RouteBuilder $routes) {
+    // Register scoped middleware for in scopes.
+    $routes->registerMiddleware('csrf', new CsrfProtectionMiddleware([
+        'httpOnly' => true
+    ]));
+
+    /**
+     * Apply a middleware to the current route scope.
+     * Requires middleware to be registered via `Application::routes()` with `registerMiddleware()`
+     */
+    $routes->applyMiddleware('csrf');
+
     /**
      * Here, we are connecting '/' (base path) to a controller called 'Pages',
      * its action called 'display', and we pass a param to select the view file
@@ -75,5 +87,13 @@ Router::scope('/', function (RouteBuilder $routes) {
      * You can remove these routes once you've connected the
      * routes you want in your application.
      */
+    $routes->fallbacks(DashedRoute::class);
+});
+
+/**
+ * プレフィックスAPIのルーティング
+ */
+Router::prefix('api', function ($routes) {
+    $routes->connect('/', ['controller' => 'Pages', 'action' => 'index']);
     $routes->fallbacks(DashedRoute::class);
 });
