@@ -9,14 +9,15 @@
         "cakephp/cakephp": "3.6.*",
         "cakephp/migrations": "^2.0.0",
         "cakephp/plugin-installer": "^1.0",
-        "josegonzalez/dotenv": "3.*",
-        "mobiledetect/mobiledetectlib": "2.*",
         "cartalyst/sentinel": "^2.0",
         "cartalyst/support": "~1.0|~2.0",
         "illuminate/database": "~5.0",
         "illuminate/events": "^5.2",
         "illuminate/http": "~5.0",
         "illuminate/support": "~5.0",
+        "josegonzalez/dotenv": "3.*",
+        "league/flysystem": "^1.1",
+        "mobiledetect/mobiledetectlib": "2.*",
         "paragonie/random_compat": "~1.1"
     },
     "require-dev": {
