@@ -16,6 +16,7 @@
         "illuminate/http": "~5.0",
         "illuminate/support": "~5.0",
         "josegonzalez/dotenv": "3.*",
+        "league/csv": "^9.6",
         "league/flysystem": "^1.1",
         "mobiledetect/mobiledetectlib": "2.*",
         "paragonie/random_compat": "~1.1"
